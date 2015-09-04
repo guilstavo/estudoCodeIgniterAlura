@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<link rel="stylesheet" href="css/bootstrap">
+	<link rel="stylesheet" href="<?= base_url('css/bootstrap') ?>">
 </head>
 <body>
 	<div class="container"></div>

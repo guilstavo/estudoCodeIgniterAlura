@@ -8,6 +8,7 @@
 			$produtos = $this->produtos_model->buscaTodos();
 
 			$dados = array('produtos' => $produtos);
+			$this->load->helper('url');
 			$this->load->view('produtos/index.php', $dados);
 		}
 	}
