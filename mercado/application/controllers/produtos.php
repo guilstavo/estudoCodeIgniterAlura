@@ -9,7 +9,7 @@
 			$produtos = $this->produtos_model->buscaTodos();
 
 			$dados = array('produtos' => $produtos);
-			$this->load->helper(array('url', 'currency', 'form'));
+			$this->load->helper(array('currency', 'form'));
 			$this->load->view('produtos/index.php', $dados);
 		}
 	}

@@ -8,15 +8,20 @@
 			$usuario = $this->usuarios_model->buscaPorEmailESenha($email, $senha);
 			if($usuario){
 				$this->session->set_userdata("usuario_logado", $usuario);
-				$dados = array('mensagem' => 'Logado com Sucesso');
+				$this->session->set_flashdata('success', 'Logado com Sucesso');
 			}else{
-				$dados = array('mensagem' => 'Usuário ou senha inválida.');
+				$this->session->set_flashdata('danger', 'Usuário ou senha inválida.');
 			}
-			$this->load->view('login/autenticar', $dados);
+			redirect('/');
 		}
 
-		public logout(){
+		public function logout(){
 			$this->session->unset_userdata('usuario_logado');
-			$this->load->view('login/logout');
+			$this->session->set_flashdata('success', 'Deslogado com Sucesso');
+			redirect('/');
+		}
+
+		public function formulario(){
+			$this->load->view('produtos/formulario');
 		}
 	}

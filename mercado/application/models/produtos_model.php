@@ -3,4 +3,8 @@
 		public function buscaTodos(){
 			return $this->db->get('produtos')->result_array();
 		}
+
+		public function salva($produto){
+			$this->db->insert('produtos', $produto);
+		}
 	}
