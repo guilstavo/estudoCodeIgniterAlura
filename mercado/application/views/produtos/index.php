@@ -14,6 +14,10 @@
 			</tr>
 			<?php endforeach ?>
 		</table>
+		<?php if($this->session->userdata("usuario_logado")): ?>
+			<?= anchor('login/logout', 'Logout', array('class' => 'btn btn-primary')); ?>
+		<?php else : ?>
+
 		<h1>Login</h1>
 		<?php
 			echo form_open('login/autenticar');
@@ -40,6 +44,7 @@
 			));
 			echo form_close();
 		?>
+		<?php endif; ?>
 		<h1>Cadastro</h1>
 		<?php
 			echo form_open('usuarios/novo');
