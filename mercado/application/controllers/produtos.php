@@ -30,4 +30,13 @@
 			$this->session->set_flashdata('success', 'Produto salvo com sucesso.');
 			redirect('/');
 		}
+
+		public function mostra(){
+			$id = $this->input->get('id');
+			$this->load->model('produtos_model');
+			$produto = $this->produtos_model->busca($id);
+			$dados = array('produto' => $produto);
+			$this->load->helper('typography');
+			$this->load->view('produtos/mostra', $dados);
+		}
 	}
