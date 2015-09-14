@@ -2,9 +2,9 @@
 
 	class Vendas extends CI_Controller{
 		public function nova(){
+			$usuario = autoriza();
 			$this->load->model('vendas_model');
 			$this->load->helper('date');
-			$usuario = $this->session->userdata('usuario_logado');
 			$venda = array(
 				'produto_id' => $this->input->post('produto_id'),
 				'comprador_id' => $usuario['id'],
@@ -16,7 +16,7 @@
 		}
 
 		public function index(){
-			$usuario = $this->session->userdata("usuario_logado");
+			$usuario = autoriza();
 			$this->load->model('produtos_model');
 			$produtosVendidos = $this->produtos_model->buscaVendidos($usuario);
 			$dados = array('produtosVendidos' => $produtosVendidos);

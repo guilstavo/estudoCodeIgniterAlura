@@ -14,10 +14,12 @@
 		}
 
 		public function formulario(){
+			autoriza();
 			$this->load->view('produtos/formulario');
 		}
 
 		public function novo(){
+			$usuarioLogado = autoriza();
 			$this->load->library("form_validation");
 			$this->form_validation->set_rules('nome', 'nome', 'required|min_length[5]|max_length[100]|callback_nao_tenha_a_palavra_melhor');
 			$this->form_validation->set_rules('preco', 'preco', 'required');
@@ -25,7 +27,6 @@
 			$this->form_validation->set_error_delimiters("<p class='alert alert-danger'>", "</p>");
 			$sucesso = $this->form_validation->run();
 			if($sucesso){
-				$usuarioLogado = $this->session->userdata("usuario_logado");
 				$produto = array(
 					'nome' => $this->input->post('nome'),
 					'descricao' => $this->input->post('descricao'),
