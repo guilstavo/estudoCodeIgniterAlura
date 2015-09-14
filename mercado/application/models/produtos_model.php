@@ -14,4 +14,11 @@
 		public function salva($produto){
 			$this->db->insert('produtos', $produto);
 		}
+
+		public function buscaTodosNaoVendidos(){
+			return $this->db->get_where('produtos', array(
+				'vendido' => false
+			))->result_array();
+		}
+		
 	}
