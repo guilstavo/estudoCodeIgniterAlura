@@ -31,8 +31,7 @@
 			redirect('/');
 		}
 
-		public function mostra(){
-			$id = $this->input->get('id');
+		public function mostra($id){
 			$this->load->model('produtos_model');
 			$produto = $this->produtos_model->busca($id);
 			$dados = array('produto' => $produto);
