@@ -10,12 +10,16 @@
 
 			$dados = array('produtos' => $produtos);
 			$this->load->helper(array('currency'));
+			$this->load->view('cabecalho.php');
 			$this->load->view('produtos/index.php', $dados);
+			$this->load->view('rodape.php');
 		}
 
 		public function formulario(){
 			autoriza();
+			$this->load->view('cabecalho.php');
 			$this->load->view('produtos/formulario');
+			$this->load->view('rodape.php');
 		}
 
 		public function novo(){
@@ -47,12 +51,14 @@
 			$produto = $this->produtos_model->busca($id);
 			$dados = array('produto' => $produto);
 			$this->load->helper('typography');
+			$this->load->view('cabecalho.php');
 			$this->load->view('produtos/mostra', $dados);
+			$this->load->view('rodape.php');
 		}
 
 		public function nao_tenha_a_palavra_melhor($nome){
 			$posicao = strpos($nome, "melhor");
-			if($posicao != FALSE){
+			if($posicao == FALSE){
 				return true;
 			}else{
 				$this->form_validation->set_message('nao_tenha_a_palavra_melhor', 'O campo "%s" não pode conter a palavra "melhor"');
